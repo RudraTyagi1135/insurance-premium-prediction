@@ -81,7 +81,12 @@ def predict_output(user_input: dict):
     confidence = float(max(probabilities))
 
     # Create mapping: {class_name: probability}
-    class_labels = loaded_model.classes_.tolist()
+    class_labels_attr = loaded_model.classes_
+    class_labels = (
+        class_labels_attr.tolist()
+        if hasattr(class_labels_attr, "tolist")
+        else list(class_labels_attr)
+    )
     class_probs = dict(zip(class_labels, probabilities))
 
     prediction = {

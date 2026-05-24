@@ -9,8 +9,6 @@ __pycache__/
 .venv/
 venv/
 env/
-fast_api_env/
-fastapi_env/
 
 # Distribution / packaging
 .Python
@@ -111,6 +109,7 @@ build/
 # Data / ML / Outputs
 # ----------------------------------------
 *.pkl
+!model/model.pkl
 *.joblib
 *.h5
 *.hdf5
@@ -136,10 +135,9 @@ checkpoints/
 logs/
 results/
 runs/
-!model/model.pkl
 
 # ----------------------------------------
-# Streamlit / FastAPI
+# Streamlit
 # ----------------------------------------
 .streamlit/
 *.db.sqlite3
