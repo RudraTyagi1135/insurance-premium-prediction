@@ -136,6 +136,7 @@ checkpoints/
 logs/
 results/
 runs/
+!model/model.pkl
 
 # ----------------------------------------
 # Streamlit / FastAPI
@@ -155,10 +156,10 @@ runs/
 *.csr
 
 # Local config files
-config.yaml
 secrets.yaml
 *.yml
 *.yaml
+!config.yaml
 
 # ----------------------------------------
 # Reports

@@ -183,19 +183,31 @@ curl -X POST "http://127.0.0.1:8000/predict" ^
   -d "{\"age\":30,\"weight\":65.0,\"height\":1.7,\"income_lpa\":10.0,\"smoker\":false,\"city\":\"Mumbai\",\"occupation\":\"private_job\"}"
 ```
 
-## Running the Streamlit Frontend
+## Running the Streamlit App
 
-Start the FastAPI server first, then run:
+For local or Streamlit Community Cloud deployment, run the Streamlit entrypoint:
 
 ```bash
-streamlit run frontend/frontend.py
+streamlit run streamlit_app.py
 ```
 
-The frontend sends prediction requests to:
+The Streamlit app runs inference directly through `model/prediction.py`; it does not require a separate FastAPI server or a localhost API URL.
+
+Before deploying, make sure the trained model artifact exists at the configured path:
 
 ```text
-http://127.0.0.1:8000/predict
+model/model.pkl
 ```
+
+This path is controlled by `config.yaml`:
+
+```yaml
+model:
+  path: model/model.pkl
+  version: 1.0.0
+```
+
+The repository now allows `model/model.pkl` and `config.yaml` to be committed. If the model file is too large for normal Git hosting, use Git LFS or add a startup step that downloads the artifact from S3 before Streamlit starts.
 
 ## Docker Usage
 

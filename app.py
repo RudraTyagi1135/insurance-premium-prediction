@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 #Internal Imports
 from schema.user_input import UserInput
-from model.prediction import MODEL_VERSION,model,predict_output
+from model.prediction import MODEL_VERSION, ModelArtifactNotFoundError, predict_output
 from schema.prediction_response import PredictionResponse
 
 #fastapi object
@@ -45,7 +45,10 @@ async def predict_premium(data: UserInput):
         prediction = predict_output(user_input)
         
         #return result
-        return JSONResponse(status_code=200 , content = f"predicted category is {prediction}")
+        return prediction
+
+    except ModelArtifactNotFoundError as e:
+        return JSONResponse(status_code=503 , content=str(e))
 
     except Exception as e:
         return JSONResponse(status_code=500 , content=str(e))

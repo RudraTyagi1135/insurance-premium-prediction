@@ -1,0 +1,7 @@
+model:
+  path: model/model.pkl
+  version: 1.0.0
+
+prediction_logging:
+  enabled: true
+  path: logs/predictions.jsonl
