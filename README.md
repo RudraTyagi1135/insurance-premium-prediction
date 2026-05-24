@@ -5,7 +5,7 @@ A Streamlit app that estimates an insurance premium category from customer profi
 Live app:
 
 
-https://insurance-premium-predictor-1.streamlit.app/
+https://insurance-premium-predictor-1135.streamlit.app/
 
 
 ## What This Project Does
